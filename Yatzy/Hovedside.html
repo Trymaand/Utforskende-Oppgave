@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js"></script>
+    <script>
+      var on = false;
+      let x = 10;
+      let y = 10;
+      let w = 40;
+      let h = 40;
+
+      function trillTerniger() {
+        let tern = [];
+
+        for (let a = 1; a <= 5; a++) {
+          let x = Math.floor(Math.random() * 5 + 1);
+          tern.push(x);
+        }
+        console.log(tern);
+      }
+
+      function setup() {
+        createCanvas(500, 500);
+        frameRate(10);
+      }
+      function draw() {
+        background(0);
+        stroke(255);
+        strokeWeight(3);
+        noFill();
+
+        if (on) {
+          background(0, 0, 255);
+          //Trill fem terninger
+          trillTerniger();
+          on = !on;
+        } else {
+          background(0);
+          //Oppdater siden
+        }
+
+        if (
+          mouseX > x - w / 2 &&
+          mouseX < x + w / 2 &&
+          mouseY > y - h / 2 &&
+          mouseY < y + h / 2
+        ) {
+          fill(0, 225, 0);
+        }
+        rectMode(CENTER);
+        rect(x, y, w, h);
+      }
+      function mousePressed() {
+        if (
+          mouseX > x - w / 2 &&
+          mouseX < x + w / 2 &&
+          mouseY > y - h / 2 &&
+          mouseY < y + h / 2
+        ) {
+          on = !on;
+        }
+      }
+    </script>
+  </body>
+</html>
